@@ -23,18 +23,21 @@ contract StorageFactory {
     function sfstore(uint256 _simpleStorageIndex, uint256 _simpleStorageNumber)
         public
     {
-        //with the array index, get the contract address you want to interact with and call its store
-        //function to save your fav number
-        SimpleStorage simpleStorage = SimpleStorage(simpleStorageArray[_simpleStorageIndex]);
+        SimpleStorage simpleStorage = SimpleStorage(address(simpleStorageArray[_simpleStorageIndex]));
 
         simpleStorage.store(_simpleStorageNumber);
     }
 
     function sfGet(uint256 _simpleStorageIndex) public view returns (uint256) {
-        //with the array index, get the contract address you want to interact with and call its store
-        //function to retrieve your fav number
-        SimpleStorage simpleStorage = SimpleStorage(simpleStorageArray[_simpleStorageIndex]);
+        SimpleStorage simpleStorage = SimpleStorage(
+            address(simpleStorageArray[_simpleStorageIndex])
+        );
         return simpleStorage.retrieve();
     }
 }
 
+
+  //NOTONG BELOW
+  //if you want to interact with a contract, you need two things, the address  and the ABI
+        //adress can be gotten from the simpleStorageArray with indexed
+        //ABI -> application binary interface from the import
