@@ -22,3 +22,4 @@ contract TestBase {
         return storedData;
     }
 }
+
